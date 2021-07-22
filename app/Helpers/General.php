@@ -14,7 +14,7 @@ class General
     		$selected = is_array($options['selected']) ? $options['selected'] : [$options['selected']];
     	}
 
-    	if (!empty($options['placeholder'])) {
+    	if (isset($options['placeholder'])) {
     		$placeholder = [
     			'id' => '',
     			'name' => $options['placeholder'],
@@ -24,7 +24,7 @@ class General
     	}
 
         $multiple = '';
-        if(!empty($options['multiple'])) {
+        if(isset($options['multiple'])) {
             $multiple = 'multiple';
         }
 
@@ -35,14 +35,7 @@ class General
     	return $select;
 	}
 
-	public static function getMultiLevelOptions($array, $parent_id = 0, $parents = [], $selected = [], $placeholder = null) {
-    	if ($placeholder != null) {
-    		$placeholder_item = [
-    			'id' => 0,
-    			'name' => $placeholder
-    		];
-    		$array[] = $placeholder;
-    	}
+	public static function getMultiLevelOptions($array, $parent_id = 0, $parents = [], $selected = []) {
 
         static $i=0;
         if ($parent_id==0) {

@@ -9,9 +9,11 @@ use App\Models\Category;
 
 use Str;
 use Session;
+use App\Authorizable;
 
 class CategoryController extends Controller
 {
+    use Authorizable;
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +81,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::where('id', '!=', $id)->orderBy('name', 'asc')->get();
 
         $this->data['categories'] = $categories->toArray();
         $this->data['category'] = $category;
