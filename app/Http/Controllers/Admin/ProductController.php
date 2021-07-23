@@ -30,6 +30,11 @@ class ProductController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
+
+        $this->data['currentAdminMenu'] = 'catalog';
+        $this->data['currentAdminSubMenu'] = 'product';
+
         $this->data['statuses'] = Product::statuses();
         $this->data['types'] = Product::types();
     }
@@ -40,7 +45,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $this->data['products'] = Product::orderBy('name','ASC')-> paginate(10);
+        $this->data['products'] = Product::orderBy('name', 'ASC')->paginate(10);
 
         return view('admin.products.index', $this->data);
     }
