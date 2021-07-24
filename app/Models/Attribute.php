@@ -23,7 +23,7 @@ class Attribute extends Model
             'text' => 'Text',
             'textarea' => 'Textarea',
             'price' => 'Price',
-            'boolean'=> 'Boolean',
+            'boolean' => 'Boolean',
             'select' => 'Select',
             'datetime' => 'Datetime',
             'date' => 'Date',

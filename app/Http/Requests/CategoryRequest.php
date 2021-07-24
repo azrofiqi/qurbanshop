@@ -23,6 +23,7 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
+
         $parentId = (int) $this->get('parent_id');
         $id = (int) $this->get('id');
 
@@ -39,6 +40,7 @@ class CategoryRequest extends FormRequest
             $name = 'required|unique:categories,name,NULL,id,parent_id,'.$parentId;
             $slug = 'unique:categories,slug';
         }
+
         return [
             'name' => $name,
             'slug' => $slug,

@@ -40,7 +40,7 @@ class Product extends Model
 
     public function variants()
     {
-        return $this->hasMany('App\Models\Product', 'parent_id');
+        return $this->hasMany('App\Models\Product', 'parent_id')->orderBy('price', 'ASC');
     }
 
     public function parent()
@@ -57,6 +57,7 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductImage')->orderBy('id', 'DESC');
     }
+
     public static function statuses()
     {
         return [
@@ -72,7 +73,6 @@ class Product extends Model
 
        return isset($this->status) ? $statuses[$this->status] : null;
     }
-
 
     public static function types()
     {
